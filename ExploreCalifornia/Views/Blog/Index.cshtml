@@ -1,18 +1,13 @@
 ﻿@model IEnumerable<ExploreCalifornia.Models.Post>
-@{
-    Layout = "_Layout";
-}
-
-@section header {
-    <h1>Explore our world your way</h1>
-    <a href="/tours.htm" title="Find your tour!">
-        <h2>Find your tour</h2>
-    </a>
+@{ 
+    Layout = "_SimpleLayout";
 }
 
 <h1>Explorer's Blog</h1>
 
-<p>Here are a few of the latest posts from some of our explorers.</p>
+<p>
+    Below are a few of the latest posts from some of our explorers.
+</p>
 
 <div class="blog-posts">
     @foreach (var post in Model)
