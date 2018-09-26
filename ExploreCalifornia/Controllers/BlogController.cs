@@ -51,5 +51,17 @@ namespace ExploreCalifornia.Controllers
 
             return View(post);
         }
+
+        [HttpGet, Route("create")]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost, Route("create")]
+        public IActionResult Create([Bind("Title", "Body")] Post post)
+        {
+            return View();
+        }
     }
 }
