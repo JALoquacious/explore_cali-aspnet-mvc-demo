@@ -61,6 +61,8 @@ namespace ExploreCalifornia.Controllers
         [HttpPost, Route("create")]
         public IActionResult Create([Bind("Title", "Body")] Post post)
         {
+            if (!ModelState.IsValid) return View();
+
             return View();
         }
     }
