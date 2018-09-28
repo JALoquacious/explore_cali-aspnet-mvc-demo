@@ -1,10 +1,28 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
 
 namespace ExploreCalifornia.Models
 {
     public class Post
     {
+        public long Id { get; set; }
+
+        private string _key;
+
+        public string Key
+        {
+            get
+            {
+                if (_key == null)
+                {
+                    _key = Regex.Replace(Title.ToLower(), "[^a-z0-9]", "-");
+                }
+                return _key;
+            }
+            set { _key = value; }
+        }
+
         [Required]
         [Display(Name = "Post Title")]
         [DataType(DataType.Text)]
@@ -15,7 +33,7 @@ namespace ExploreCalifornia.Models
 
         [Required]
         [DataType(DataType.MultilineText)]
-        [MinLength(100, ErrorMessage = "Title must be at least 100 characters long.")]
+        [MinLength(100, ErrorMessage = "Body must be at least 100 characters long.")]
         public string Body { get; set; }
 
         public DateTime Posted { get; internal set; } = DateTime.Now;
